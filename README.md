@@ -122,3 +122,19 @@ quantile すごい
 ```
 mosdepth -q 0:1:4:100:200: s1 s1.sorted.bam
 ```
+
+## T1, T2, T3
+
+追加のmutationの発生
+
+```
+wgsim.cr mut -S 201 --ploidy 1 -i 0.0002 -d 0.0002 -I 0.5 -D 0.5 s1/s1.fa > t1/t1.fa 2> t1/t1.mutation.txt
+wgsim.cr mut -S 301 --ploidy 1 -i 0.0002 -d 0.0002 -I 0.5 -D 0.5 s2/s2.fa > t2/t2.fa 2> t2/t2.mutation.txt
+wgsim.cr mut -S 401 --ploidy 1 -i 0.0002 -d 0.0002 -I 0.5 -D 0.5 s3/s3.fa > t3/t3.fa 2> t3/t3.mutation.txt
+```
+
+```
+wgsim.cr seq -D 20 -S 201 t1/t1.fa t1/t1_1.fa t1/t1_2.fa
+wgsim.cr seq -D 20 -S 301 t2/t2.fa t2/t2_1.fa t2/t2_2.fa
+wgsim.cr seq -D 20 -S 401 t3/t3.fa t3/t3_1.fa t3/t3_2.fa
+```

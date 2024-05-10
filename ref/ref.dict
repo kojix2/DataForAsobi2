@@ -1,0 +1,6 @@
+@HD	VN:1.6
+@SQ	SN:chr1	LN:2000	M5:6f1d6ca565abe8717c5b125823842db5	UR:file:/gatk/my_data/ref/ref.fa
+@SQ	SN:chr2	LN:1800	M5:f4efca65d72d8154cf67e739babcac87	UR:file:/gatk/my_data/ref/ref.fa
+@SQ	SN:chr3	LN:1600	M5:745b280ea2a67b43dadbbfac2b8164f3	UR:file:/gatk/my_data/ref/ref.fa
+@SQ	SN:chr4	LN:1400	M5:909923d3850ebf09d0c8d532d9d0290f	UR:file:/gatk/my_data/ref/ref.fa
+@SQ	SN:chr5	LN:1200	M5:239e491dee75335135cdc3558713fcfe	UR:file:/gatk/my_data/ref/ref.fa

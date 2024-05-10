@@ -1,8 +1,19 @@
-# config.yaml
-
 samples:
-  - S1
-  - S2
-  - S3
-
+  normal:
+    - s1
+    - s2
+    - s3
+  tumor:
+    - t1
+    - t2
+    - t3
+pairs:
+  - normal: s1
+    tumor: t1
+  - normal: s2
+    tumor: t2
+  - normal: s3
+    tumor: t3
 reference: "ref/ref.fa"
+gatk_image: "broadinstitute/gatk:latest"
+docker_data: "/gatk/my_data"

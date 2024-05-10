@@ -1,0 +1,39 @@
+[wgsim] # Reference: s3/s3.fa
+[wgsim] # Ploidy: 1
+[wgsim] # Seed: 401
+[wgsim] # Substitution rate: 0.001
+[wgsim] # Insertion    rate: 0.0002
+[wgsim] # Deletion     rate: 0.0002
+[wgsim] # Insertion extension probability: 0.5
+[wgsim] # Deletion  extension probability: 0.5
+[wgsim] chr1_1 1998 bp
+[wgsim]	DEL	chr1_1	1134	T	.
+[wgsim]	DEL	chr1_1	1274	A	.
+[wgsim] chr1_2 2000 bp
+[wgsim]	SUB	chr1_2	1151	A	G
+[wgsim] chr2_1 1797 bp
+[wgsim]	SUB	chr2_1	305	G	C
+[wgsim]	DEL	chr2_1	1305	ACG	.
+[wgsim] chr2_2 1801 bp
+[wgsim]	SUB	chr2_2	643	G	T
+[wgsim]	SUB	chr2_2	680	A	G
+[wgsim]	SUB	chr2_2	1275	T	C
+[wgsim]	INS	chr2_2	1692	T	TC
+[wgsim] chr3_1 1600 bp
+[wgsim]	SUB	chr3_1	970	A	G
+[wgsim]	SUB	chr3_1	1196	A	C
+[wgsim] chr3_2 1599 bp
+[wgsim]	DEL	chr3_2	568	G	.
+[wgsim] chr4_1 1397 bp
+[wgsim]	SUB	chr4_1	59	A	T
+[wgsim]	SUB	chr4_1	297	C	G
+[wgsim]	DEL	chr4_1	690	CAG	.
+[wgsim] chr4_2 1400 bp
+[wgsim]	DEL	chr4_2	502	C	.
+[wgsim]	INS	chr4_2	961	C	CG
+[wgsim]	SUB	chr4_2	1072	G	C
+[wgsim] chr5_1 1201 bp
+[wgsim]	INS	chr5_1	209	A	AT
+[wgsim]	SUB	chr5_1	389	T	C
+[wgsim] chr5_2 1199 bp
+[wgsim]	DEL	chr5_2	1170	A	.
