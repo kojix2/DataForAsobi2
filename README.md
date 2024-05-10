@@ -81,41 +81,14 @@ wgsim.cr mut -S 401 -i 0.0002 -d 0.0002 -I 0.5 -D 0.5 ref/ref.fa > s3/s3.fa 2> s
 シーケンスのシミュレーション
 
 ```
-wgsim.cr seq -S 201 s1/s1.fa s1/s1_1.fa s1/s1_2.fa
-wgsim.cr seq -S 301 s1/s1.fa s2/s2_1.fa s2/s2_2.fa
-wgsim.cr seq -S 401 s1/s1.fa s3/s3_1.fa s3/s3_2.fa
+wgsim.cr seq -D 15 -S 201 s1/s1.fa s1/s1_1.fa s1/s1_2.fa
+wgsim.cr seq -D 15 -S 301 s2/s2.fa s2/s2_1.fa s2/s2_2.fa
+wgsim.cr seq -D 15 -S 401 s3/s3.fa s3/s3_1.fa s3/s3_2.fa
 ```
 
 ## アラインメント
 
-```snakemake
-SAMPLES = ["S1", "S2", "S3"]
-REFERENCE = "ref/ref.fa"
-
-rule all:
-    input:
-        expand("{sample}/{sample}.sorted.bam", sample=[s.lower() for s in SAMPLES])
-
-rule bwa_mem:
-    input:
-        ref=REFERENCE,
-        r1="{sample}/{sample}_1.fa.gz",
-        r2="{sample}/{sample}_2.fa.gz"
-    output:
-        bam="{sample}/{sample}.bam"
-    params:
-        rg="@RG\\tID:{sample}\\tSM:{sample}\\tLB:{sample}"
-    shell:
-        "bwa mem -R {params.rg} {input.ref} {input.r1} {input.r2} > {output.bam}"
-
-rule samtools_sort:
-    input:
-        "{sample}/{sample}.bam"
-    output:
-        "{sample}/{sample}.sorted.bam"
-    shell:
-        "samtools sort -o {output} {input}"
-```
+ChatGPTを使ってSnakefileを書かせてみた。
 
 ```
 snakemake --cores 3
@@ -125,8 +98,20 @@ snakemake --cores 3
 
 ## bcftools
 
-bcftools mpileup -O v -f ref.fa s*.sorted.bam > s123_genotypes.vcf
-bcftools call -vm -Ov s123_genotypes.vcf | bcftools norm -Ov -f ref.fa -d all - > s123_variants.vcf
+```
+bcftools mpileup -O v \
+  -f ref/ref.fa \
+  s1/s1.sorted.bam \
+  s2/s2.sorted.bam \
+  s3/s3.sorted.bam \
+  > s123_genotypes.vcf
+
+ bcftools call -vm -O v \
+  s123_genotypes.vcf \
+  | bcftools norm -O v \
+  -f ref/ref.fa -d all - \
+  > s123_variants.vcf
+```
 
 ## freebayes
 
