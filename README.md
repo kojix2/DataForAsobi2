@@ -138,3 +138,11 @@ wgsim.cr seq -D 20 -S 201 t1/t1.fa t1/t1_1.fa t1/t1_2.fa
 wgsim.cr seq -D 20 -S 301 t2/t2.fa t2/t2_1.fa t2/t2_2.fa
 wgsim.cr seq -D 20 -S 401 t3/t3.fa t3/t3_1.fa t3/t3_2.fa
 ```
+
+mutect2 は Docker で動かす。
+
+```
+snakemake --core 3
+```
+
+mutect2ディレクトリの中に、VCFファイルが出力される。
