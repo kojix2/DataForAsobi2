@@ -3,7 +3,7 @@
 import yaml
 
 # Load configuration
-with open("config.yml", "r") as f:
+with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
 
 # Load sample names
@@ -13,7 +13,7 @@ REFERENCE = config["reference"]
 # Default target
 rule all:
     input:
-        expand("{sample}/{sample}.sorted.bam", sample=[s.lower() for s in SAMPLES])
+        expand("{sample}/{sample}.sorted.bam.bai", sample=[s.lower() for s in SAMPLES])
 
 rule bwa_mem:
     input:
@@ -34,3 +34,11 @@ rule samtools_sort:
         "{sample}/{sample}.sorted.bam"
     shell:
         "samtools sort -o {output} {input}"
+
+rule samtools_index:
+    input:
+        "{sample}/{sample}.sorted.bam"
+    output:
+        "{sample}/{sample}.sorted.bam.bai"
+    shell:
+        "samtools index {input}"
