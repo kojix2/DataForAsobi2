@@ -69,7 +69,7 @@ rule mutect2:
 
         shell(
             f"""
-            docker run --rm -v $(pwd):{DOCKER_DATA} -it {GATK_IMAGE} \
+            docker run --rm -v $(pwd):{DOCKER_DATA} -u $(id -u):$(id -g) -it {GATK_IMAGE} \
                 gatk Mutect2 \
                 -R {docker_ref} \
                 -I {docker_normal_bam} \
